@@ -18,7 +18,7 @@ export class TransferenciaService {
     get transferencias() {
         return this.listaTransferencia;
     }
-
+    
     todas(): Observable<Transferencia[]>{
         return this.httpClient.get<Transferencia[]>(this.url);
     }
