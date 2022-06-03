@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class AutenticacaoService {
 
-  constructor() { }
+  constructor(private hhtpClient: HttpClient) { }
+
+  autenticar(usuario:string, senha:string): Observable<any>
 }
