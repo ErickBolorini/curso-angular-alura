@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpHandler } from '@angular/common/http'
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,8 @@ export class AppComponent {
       description: 'Leoa'
     }
   ];
+
+  constructor(http: HttpClient){
+    console.log(http);
+  }
 }
