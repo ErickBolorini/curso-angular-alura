@@ -7,6 +7,10 @@ import { HttpClient, HttpHandler } from '@angular/common/http'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(http: HttpClient) {
+    console.log(http);
+  }
   photos = [
     {
       url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sultan_the_Barbary_Lion.jpg/440px-Sultan_the_Barbary_Lion.jpg',
@@ -17,8 +21,4 @@ export class AppComponent {
       description: 'Leoa'
     }
   ];
-
-  constructor(http: HttpClient){
-    console.log(http);
-  }
 }
