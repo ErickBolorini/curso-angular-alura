@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Comentarios } from './comentarios';
+import { Comentario, Comentarios } from './comentarios';
 
 const API = environment.apiURL;
 
@@ -17,8 +17,10 @@ export class ComentariosService {
     return this.http.get<Comentarios>(`${API}/photos/${id}/comments`)
   }
 
-  incluirComentario(){
-
+  incluirComentario(id: number, commentText: string): Observable<Comentario>{
+    return this.http.post<Comentario>(`${API}/photos/${id}/comments`, {
+      commentText,
+    });
   }
 
 }
