@@ -20,6 +20,9 @@ export class UsuarioService {
   }
 
   retornaUsuario(){
+    if (this.estaLogado()){
+      this.decodificaJWT();
+    }
     return this.usuarioSubject.asObservable();
   }
 
