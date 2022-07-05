@@ -17,6 +17,7 @@ export class LoginGuard implements CanLoad {
       this.router.navigate(['animais']);
       return false;
     }
+    console.log("1111");
 
     return true;
   }

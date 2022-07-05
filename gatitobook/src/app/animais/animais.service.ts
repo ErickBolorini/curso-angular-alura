@@ -13,25 +13,30 @@ const NOT_MODIFIELD = '304';
 })
 export class AnimaisService {
 
-  constructor(private http: HttpClient, private tokenService: TokenService) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) { }
 
   listaDoUsuario(nomeDoUsuario: string): Observable<Animais> {
-    return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`)
+
+    if (nomeDoUsuario) {
+      return this.http.get<Animais>(`${API}/${nomeDoUsuario}/photos`)
+    }
+    return this.http.get<Animais>(`${API}/erick/photos`)
+
   }
 
-  buscaPorId(id:number): Observable<Animal>{
+  buscaPorId(id: number): Observable<Animal> {
     return this.http.get<Animal>(`${API}/photos/${id}`);
   }
 
-  excluiAnimal(id: number): Observable<Animal>{
+  excluiAnimal(id: number): Observable<Animal> {
     return this.http.delete<Animal>(`${API}/photos/${id}`)
   }
 
-  curtir(id: number):Observable<boolean>{
+  curtir(id: number): Observable<boolean> {
     return this.http.post(`${API}/photos/${id}/like`, {}, {
       observe: 'response'
     }).pipe(
-      mapTo(true),catchError((error) => {
+      mapTo(true), catchError((error) => {
         return error.status == NOT_MODIFIELD ? of(false) : throwError(error);
       })
     );
